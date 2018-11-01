@@ -1,0 +1,34 @@
+.layout{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+.logo {
+    
+    height: 31px;
+   
+    margin: 5px;
+    float: left;
+    color: white;
+    font-size: 30px;
+  }
+
+ .logoutButton{
+   margin: 5px;
+ } 
+.Container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.Greeting{
+    font-size: 30px;
+   
+}
+
+.AppName{
+    font-size: 30px;
+}

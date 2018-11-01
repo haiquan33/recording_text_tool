@@ -1,0 +1,13 @@
+.Login{
+
+    width: 10%;
+}
+
+.Login>input{
+    margin:8px;
+    width: 100%;
+}
+
+.Login>button{
+    margin: 10px;
+}

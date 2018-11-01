@@ -1,0 +1,9 @@
+.Home{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.homeitemContainer{
+    display: flex;
+    flex-direction: row;
+}
