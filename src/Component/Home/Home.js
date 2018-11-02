@@ -109,8 +109,8 @@ class Home extends Component {
                         <div className="homeitemContainer">
                             <Card
                                 hoverable
-                                style={{ width: '50%' }}
-
+                             
+                                className="langItem"
                             >
                                 <div >
                                     <p>{temp.original}</p>
@@ -126,8 +126,8 @@ class Home extends Component {
                             </Card>
                             <Card
                                 hoverable
-                                style={{ width: '50%' }}
-
+                               
+                                className="langItem"
                             >
                                 <div >
                                     <p>{temp.trans}</p>

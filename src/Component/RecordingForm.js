@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import firebase_init from '../firebase_int'
-import { Form, Input, Icon, Button, Select } from 'antd';
+import { Form, Input, Icon, Button, Select,Divider } from 'antd';
 import { ReactMic } from 'react-mic';
 import './RecordingForm.css'
 
@@ -105,7 +105,16 @@ class DynamicFieldSet extends React.Component {
     form.setFieldsValue({
       keys: keys.filter(key => key !== k),
     });
+    
+    const names=form.getFieldValue('names');
+    let r_name=names[index];
+    form.setFieldsValue({
+      names: names.filter(name => name !== r_name),
+    });
+    
     console.log("remove at", index)
+
+
     let temp_array = this.state.blobURL;
     temp_array.splice(index, 1)
     console.log(temp_array);
@@ -273,6 +282,12 @@ class DynamicFieldSet extends React.Component {
             required={false}
             key={k}
           >
+            {index!==0? <Divider />:null}
+            <div className="LanguageSelectContainerResponsive">
+              {OriLanguageSelect}
+              
+              {TransLanguageSelect}
+            </div>
             {getFieldDecorator(`names[${k}]`, {
               validateTrigger: ['onChange', 'onBlur'],
               rules: [{
@@ -282,7 +297,7 @@ class DynamicFieldSet extends React.Component {
               }],
             })(
 
-              <Input placeholder="Nhập câu bạn muốn ghi âm vào đây" style={{ width: '60%', marginRight: 8 }} addonAfter={this.recordButton(index)} />
+              <Input placeholder="Nhập câu bạn muốn ghi âm vào đây" addonAfter={this.recordButton(index)} />
 
             )}
 
@@ -290,7 +305,7 @@ class DynamicFieldSet extends React.Component {
             <audio ref="audioSource" controls="controls" src={this.state.blobURL[index]}></audio>
             <div className="LanguageSelectContainer">
               {OriLanguageSelect}
-              <div>to</div>
+              
               {TransLanguageSelect}
             </div>
             {getFieldDecorator(`namesTrans[${k}]`, {
@@ -302,7 +317,7 @@ class DynamicFieldSet extends React.Component {
               }],
             })(
 
-              <Input placeholder="Nhập bản dịch vào đây" style={{ width: '60%', marginRight: 8, top: '-37px' }} addonAfter={this.recordTransButton(index)} />
+              <Input placeholder="Nhập bản dịch vào đây" addonAfter={this.recordTransButton(index)} />
 
             )}
 
@@ -327,7 +342,7 @@ class DynamicFieldSet extends React.Component {
 
     return (
 
-      <div>
+      <div className="RecordingForm">
         <ReactMic
           record={this.state.currentRecording}
           className="sound-wave"

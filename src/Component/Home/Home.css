@@ -7,3 +7,21 @@
     display: flex;
     flex-direction: row;
 }
+.langItem{
+    width: 50%;
+}
+
+@media only screen and (max-width: 800px){
+  
+    .homeitemContainer{
+        display: flex;
+        flex-direction: column !important;
+    }
+    .langItem{
+        width: 100%;
+    }
+    audio{
+        width:50%;
+    }
+    
+}

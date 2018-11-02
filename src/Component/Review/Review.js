@@ -111,7 +111,7 @@ class Review extends Component {
                         <div className="homeitemContainer">
                             <Card
                                 hoverable
-                                style={{ width: '50%' }}
+                                className="langItem"
 
                             >
                                 <div >
@@ -128,7 +128,7 @@ class Review extends Component {
                             </Card>
                             <Card
                                 hoverable
-                                style={{ width: '50%' }}
+                                className="langItem"
 
                             >
                                 <div >

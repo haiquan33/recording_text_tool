@@ -7,6 +7,7 @@
   justify-items: center;
   width: 100%;
   height: 100vh;
+  background: #F0F2F5;
 }
 
 .App-logo {
@@ -35,5 +36,26 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@media only screen and (max-width: 800px){
+ 
+  .Header{
+    display: none;
+  }
+  .ant-btn>.logoutButton>.ant-btn-primary{
+    display: none;
+   
+  }
+  .Greeting{
+    display: none;
+  }
+  .Burger-Menu{
+    margin-top:80px;
+    visibility: visible;
+  }
+  .layout{
+    margin-top:100px;
   }
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { Layout, Menu, Breadcrumb, Button } from 'antd';
-
+import HamburgerMenu from './Component/BurgerMenu/HamburgerMenu'
 
 import { RecordingForm } from './Component/RecordingForm'
 import Home from './Component/Home/Home'
@@ -16,16 +16,22 @@ class RecordingTextTool extends Component {
     constructor(props){
         super(props);
         this.state={OpeningPage:"home"}
-       
+        this.changeOpeningPage=this.changeOpeningPage.bind(this);
     }
 
     handleClick = (e) => {
         this.setState({OpeningPage:e.key})
       }
 
+    changeOpeningPage(OpeningPage){
+        this.setState({OpeningPage})
+    }  
+
     render() {
         return (
             <Layout className="layout">
+                <HamburgerMenu logout={this.props.logout} changeOpeningPage={this.changeOpeningPage} className='Burger-Menu' />
+
                 <Header className="Header" >
                     <div className="logo" >Chương trình làm ngoại ngữ đa dạng</div>
                     <Menu

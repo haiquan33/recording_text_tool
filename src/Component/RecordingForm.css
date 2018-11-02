@@ -26,3 +26,30 @@
   canvas{
     display: none !important;
   }
+
+  input{
+    width: 60%;
+    margin-right: 8
+  }
+ .LanguageSelectContainerResponsive{
+   visibility: hidden;
+ }
+
+  @media only screen and (max-width: 800px){
+ 
+      audio{
+        width: 50%;
+      }
+      input{
+        width: 50%;
+      }
+      .LanguageSelectContainer{
+        visibility: hidden;
+      }
+      .LanguageSelectContainerResponsive{
+        visibility: visible;
+      }
+      .RecordingForm{
+        margin-top:50px;
+      }
+  }
