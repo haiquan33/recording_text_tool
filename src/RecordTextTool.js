@@ -4,7 +4,8 @@ import { Layout, Menu, Breadcrumb, Button } from 'antd';
 import HamburgerMenu from './Component/BurgerMenu/HamburgerMenu'
 
 import { RecordingForm } from './Component/RecordingForm'
-import Home from './Component/Home/Home'
+import Search from './Component/Search/Search'
+import Home from './Component/Home_dict/Home'
 import Review from './Component/Review/Review'
 import './RecordTextTool.css'
 
@@ -41,6 +42,8 @@ class RecordingTextTool extends Component {
                         style={{ lineHeight: '64px' }}
                         onClick={this.handleClick}
                     >   
+                        <Menu.Item key="search">Search</Menu.Item>
+
                          <Menu.Item key="home">Home</Menu.Item>
 
                         <Menu.Item key="edit">Edit</Menu.Item>
@@ -57,9 +60,10 @@ class RecordingTextTool extends Component {
                             <div className="Greeting" >Hi! {this.props.username}</div>
                             <Button className="logoutButton" onClick={this.props.logout} type="primary">Log Out</Button>
                         </div>
-                        {this.state.OpeningPage==='home'?<Home/>:null}
+                        {this.state.OpeningPage==='home'?<Home userInfo={this.props.userInfo}/>:null}
                         {this.state.OpeningPage==='edit'?<RecordingForm username={this.props.username}/>:null}
                         {this.state.OpeningPage==='review'?<Review username={this.props.username}/>:null}
+                        {this.state.OpeningPage==='search'?<Search/>:null}
                     </div>
                 </Content>
 

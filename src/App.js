@@ -4,9 +4,12 @@ import Login from './Component/Login/Login.js'
 import RecordTextTool from './RecordTextTool'
 import { withCookies, Cookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
+import firebase_init,{auth,Authprovider} from './firebase_int'
 
 import './App.css';
 import 'antd/dist/antd.css';
+
+
 class App extends Component {
 
   static propTypes = {
@@ -20,43 +23,52 @@ class App extends Component {
     this.logout=this.logout.bind(this);
   }
 
-  confirmUser(username, password) {
+  confirmUser(user) {
     const { cookies } = this.props;
 
-    if (password === '') {
-      cookies.set('username', username, { path: '/' });
-      this.setState({ LoggedIn: true, username });
+    if (user) {
+     
+      this.setState({ LoggedIn: true, username:user.displayName,userInfo:user });
     }
   }
 
   logout(){
     const { cookies } = this.props;
-
-    this.setState({LoggedIn:false,username:null},()=>{
-      cookies.remove('username',{ path: '/' });
-    })
+    auth.signOut()
+    .then(() => {
+      this.setState({
+        user: null,LoggedIn:false
+      });
+    });
+  
   }
 
   componentDidMount() {
     const { cookies } = this.props;
-   
-      let username = cookies.get("username");
-      if (username) {
-        this.setState({
-          LoggedIn: true,
-          username
-        })
-      }
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        this.setState({ username:user.displayName,LoggedIn:true,userInfo:user });
+      } 
+    });
+      // let username = cookies.get("username");
+      // if (username) {
+      //   this.setState({
+      //     LoggedIn: true,
+      //     username
+      //   })
+      // }
     
 
   }
 
   render() {
+   
     return (
 
       <div className="App">
+      
         {this.state.LoggedIn ?
-          <RecordTextTool logout={this.logout}  username={this.state.username} />
+          <RecordTextTool userInfo={this.state.userInfo} logout={this.logout}  username={this.state.username} />
           : <Login confirmUser={this.confirmUser} />
         }
 

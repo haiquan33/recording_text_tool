@@ -1,0 +1,43 @@
+.Home{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-content: center;
+    align-items: center;
+}
+.homeItem{
+    width: 80%;
+}
+.homeitemContainer{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+.langItem{
+    width: 100%;
+}
+.ant-btn.LoadMoreButton{
+    height: 50px;
+    margin-top: 10px;
+    width: 40%;
+}
+
+.CmtButton{
+    position: absolute;
+    bottom: 5px;
+    left:5%;
+}
+@media only screen and (max-width: 800px){
+  
+    .homeitemContainer{
+        display: flex;
+        flex-direction: column !important;
+    }
+    .langItem{
+        width: 100%;
+    }
+    audio{
+        width:50%;
+    }
+    
+}

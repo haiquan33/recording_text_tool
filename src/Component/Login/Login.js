@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Input, Button } from 'antd'
-
-
+import GoogleButton from 'react-google-button'
+import firebase_init,{auth,Authprovider} from '../../firebase_int'
 import './Login.css';
 
 class Login extends Component {
@@ -22,15 +22,18 @@ class Login extends Component {
 
     
     handleSubmit(){
-            this.props.confirmUser(this.state.username,this.state.password);
+        auth.signInWithPopup(Authprovider) 
+        .then((result) => {
+          const user = result.user;
+          this.props.confirmUser(user);
+        });
     }
 
     render() {
         return (
             <div className="Login">
-                <Input placeholder="Ten dang nhap" value={this.state.username} onChange={this.handleChangeName}  />
-                <input placeholder="Password" type="password" name="password" value={this.state.password} onChange={this.handleChangePass} />
-                <Button type="primary" onClick={this.handleSubmit}>Login</Button>
+            
+                <GoogleButton onClick={this.handleSubmit}/>
             </div>
         );
     }

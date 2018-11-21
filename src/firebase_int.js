@@ -13,4 +13,7 @@ var config = {
   export const Authprovider = new firebase.auth.GoogleAuthProvider();
   export const auth = firebase.auth();
   export const firestore=firebase.firestore();
+
+
+  
   export default firebase_init;
